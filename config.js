@@ -23,8 +23,8 @@ global.APIKeys = {
 
 // Other
 global.owner = ['6289618777587','6289618777587','6289618777587','6281310665285','6281310665285']
-global.packname = '\n\n\nミᵐʳÊ̬kนຊikaོ'
-global.author = '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNezuko-Bot'
+global.packname = 'ミᵐʳÊ̬kนຊikaོ'
+global.author = '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNezuko-Bot'
 global.sessionName = 'hisoka'
 global.prefa = ['','!','.','🐦','🐤','🗿']
 global.sp = '⭔'
