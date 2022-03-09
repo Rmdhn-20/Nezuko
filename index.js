@@ -34,7 +34,7 @@ async function startHisoka() {
     const hisoka = hisokaConnect({
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
-        browser: ['Hisoka-MD','Safari','1.0.0'],
+        browser: ['Nezuko-MD','Opera','1.0.0'],
         auth: state,
         version: getVersionWaweb() || [2, 2204, 13]
     })
