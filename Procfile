@@ -1,1 +1,1 @@
-worker: npm i && npm i yt-search@latest && npm start
+worker: npm i && npm start
