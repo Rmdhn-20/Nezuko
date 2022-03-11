@@ -1854,7 +1854,7 @@ break
 	        case 'igpost': case 'igreel': case 'igreels': {
                 if (!text) throw 'No Query Url!'
                 m.reply(mess.wait)
-                    hisoka.sendMessage(m.chat, { video: { url: https://api.dapuhy.xyz/api/socialmedia/igdownloader?url=${text}&apikey=ekaa123 }, caption: `Download IG from : ${text}`, { quoted: m })
+                    hisoka.sendMessage(m.chat, { video: { url: `https://api.dapuhy.xyz/api/socialmedia/igdownloader?url=${text}&apikey=ekaa123` }, caption: `Download IG from : ${text}`, { quoted: m })
             break
             case 'joox': case 'jooxdl': {
                 if (!text) throw 'No Query Title'
