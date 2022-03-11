@@ -1851,17 +1851,10 @@ break
                 hisoka.sendMessage(m.chat, { audio: cnvrt, mimetype: 'audio/mpeg'}, { quoted: msg })
             }
             break
-	        case 'instagram': case 'ig': case 'igdl': {
+	        case 'igpost': case 'igreel': case 'igreels': {
                 if (!text) throw 'No Query Url!'
                 m.reply(mess.wait)
-                if (/(?:\/p\/|\/reel\/|\/tv\/)([^\s&]+)/.test(isUrl(text)[0])) {
-                    let anu = await fetchJson(api('zenz', '/downloader/instagram2', { url: isUrl(text)[0] }, 'apikey'))
-                    for (let media of anu.data) hisoka.sendMedia(m.chat, media, '', `Download Url Instagram From ${isUrl(text)[0]}`, m)
-                } else if (/\/stories\/([^\s&]+)/.test(isUrl(text)[0])) {
-                    let anu = await fetchJson(api('zenz', '/downloader/instastory', { url: isUrl(text)[0] }, 'apikey'))
-                    hisoka.sendFile(m.chat, anu.media[0].url, '', `Download Url Instagram From ${isUrl(text)[0]}`, m)
-                }
-            }
+                    hisoka.sendMessage(m.chat, { video: { url: https://api.dapuhy.xyz/api/socialmedia/igdownloader?url=${text}&apikey=ekaa123 }, caption: `Download IG from : ${text}`, { quoted: m })
             break
             case 'joox': case 'jooxdl': {
                 if (!text) throw 'No Query Title'
@@ -2373,7 +2366,8 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 │⭔ ${prefix}tiktoknowm [url]
 │⭔ ${prefix}tiktokwm [url]
 │⭔ ${prefix}tiktokmp3 [url]
-│⭔ ${prefix}instagram [url]
+│⭔ ${prefix}igpost [url]
+│⭔ ${prefix}igreel [url]
 │⭔ ${prefix}twitter [url]
 │⭔ ${prefix}twittermp3 [url]
 │⭔ ${prefix}facebook [url]
@@ -2391,7 +2385,6 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 ┌──⭓ *Search Menu*
 │
 │⭔ ${prefix}play [query]
-│⭔ ${prefix}yts [query]
 │⭔ ${prefix}google [query]
 │⭔ ${prefix}gimage [query]
 │⭔ ${prefix}pinterest [query]
