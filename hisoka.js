@@ -1364,7 +1364,7 @@ break
                 hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
-	    case 'ytmp3': case 'ytaudio': {
+		case 'ytmp3': case 'ytaudio': case 'mp3': {
                 let { yta } = require('./lib/y2mate')
                 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27`
                 let quality = args[1] ? args[1] : '128kbps'
@@ -1374,7 +1374,7 @@ break
                 hisoka.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
             }
             break
-            case 'ytmp4': case 'ytvideo': {
+		case 'ytmp4': case 'ytvideo': case 'mp4': {
                 let { ytv } = require('./lib/y2mate')
                 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`
                 let quality = args[1] ? args[1] : '360p'
@@ -1383,7 +1383,7 @@ break
                 hisoka.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP4\n⭔ Resolusi : ${args[1] || '360p'}` }, { quoted: m })
             }
             break
-	    case 'getmusic': {
+		case 'getmusic': case 'getm': case 'geta': {
                 if (!text) throw `Example : ${prefix + command} 1`
                 if (!m.quoted) return m.reply('Reply Pesan')
                 if (!m.quoted.isBaileys) throw `Hanya Bisa Membalas Pesan Dari Bot`
@@ -1399,7 +1399,7 @@ break
                 hisoka.sendMessage(m.chat, { audio: { url: media[0].url }, mimetype: 'audio/mp4', fileName: `${title}.mp3` }, { quoted: m })
             }
             break
-            case 'getvideo': {
+	    case 'getvideo': case 'getv': {
                 let { ytv } = require('./lib/y2mate')
                 if (!text) throw `Example : ${prefix + command} 1`
                 if (!m.quoted) return m.reply('Reply Pesan')
@@ -1868,7 +1868,7 @@ break
                 m.reply(mess.wait)
                 let anu = await fetchJson(api('zenz', '/downloader/joox', { query: text }, 'apikey'))
 		let { lagu, album, penyanyi, publish, img, mp4aLink } = anu.result
-                let msg = await hisoka.sendImage(m.chat, img, `⭔ Title : ${lagu}\n⭔ Album : ${album}\n⭔ Singer : ${penyanyi}\n⭔ Publish : ${publish}\n⭔ Lirik :\n${anu.result.lirik.result}`, m)
+                let msg = await hisoka.sendImage(m.chat, img, `⭔ Title : ${lagu}\n⭔ Album : ${album}\n⭔ Singer : ${penyanyi}\n⭔ Publish : ${publish}\n`, m)
                 hisoka.sendMessage(m.chat, { audio: { url: mp4aLink }, mimetype: 'audio/mpeg', fileName: lagu+'.m4a' }, { quoted: msg })
             }
             break
