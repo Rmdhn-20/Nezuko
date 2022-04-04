@@ -2342,7 +2342,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 │⭔ ${prefix}tiktokmp3 [url]
 │⭔ ${prefix}igpost [url]
 │⭔ ${prefix}igreel [url]
-│⭔ ${prefix}twitter [url]`
+│⭔ ${prefix}twitter [url]
 │⭔ ${prefix}facebook [url]
 │⭔ ${prefix}pinterestdl [url]
 │⭔ ${prefix}ytmp3 [url]
