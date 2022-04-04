@@ -479,7 +479,7 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
             }
             break
             case 'sc': {
-                m.reply('Script : NO NYOLONG YT !\n\n Dont Forget Give Star\n\nDonate : 6289618777587 (DANA)\nSaweria : https://saweria.co/Ekuzika\n\n Dont Forget Donate')
+                m.reply('Script : GA NYOLONG DARI YT MON MAAP:V !\n\n Dont Forget Give Star\n\nDonate : 6289618777587 (DANA)\nSaweria : https://saweria.co/Ekuzika\n\n Dont Forget Donate')
             }
             break
             case 'chat': {
@@ -1874,39 +1874,12 @@ break
                 hisoka.sendMessage(m.chat, { audio: { url: anu.result.url }, mimetype: 'audio/mpeg', fileName: anu.result.title+'.m4a' }, { quoted: msg })
             }
             break
-	        case 'twitdl': case 'twitter': {
+	        case 'twitdl': case 'twitter': case 'twit': case 'twitt': {
                 if (!text) throw 'Masukkan Query Link!'
                 m.reply(mess.wait)
-                let anu = await fetchJson(api('zenz', '/api/downloader/twitter', { url: text }, 'apikey'))
-                let buttons = [
-                    {buttonId: `twittermp3 ${text}`, buttonText: {displayText: '► Audio'}, type: 1}
-                ]
-                let buttonMessage = {
-                    video: { url: anu.result.HD || anu.result.SD },
-                    caption: util.format(anu.result),
-                    footer: 'Press The Button Below',
-                    buttons: buttons,
-                    headerType: 5
-                }
-                hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
-            }
-            break
-            case 'twittermp3': case 'twitteraudio': {
-                if (!text) throw 'Masukkan Query Link!'
-                m.reply(mess.wait)
-                let anu = await fetchJson(api('zenz', '/api/downloader/twitter', { url: text }, 'apikey'))
-                let buttons = [
-                    {buttonId: `twitter ${text}`, buttonText: {displayText: '► Video'}, type: 1}
-                ]
-                let buttonMessage = {
-		    image: { url: anu.result.thumb },
-                    caption: util.format(anu.result),
-                    footer: 'Press The Button Below',
-                    buttons: buttons,
-                    headerType: 4
-                }
-                let msg = await hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
-                hisoka.sendMessage(m.chat, { audio: { url: anu.result.audio } }, { quoted: msg })
+                let anu = await fetchJson(`https://api-xcoders.xyz/api/download/twitter?url=${text}&apikey=cyXNcMnw3x`)
+                let { title, username, nickname, like_count, view_count } = anu.result
+                hisoka.sendMessage(m.chat, { video: { url: anu.result.url }, caption: `+ Title: ${title}\n+ Username: ${username}\n+ Nickname: ${nickname}\n+ Likes: ${like_count}\n+ Viewers: ${view_count}`})
             }
             break
 	        case 'fbdl': case 'fb': case 'facebook': {
@@ -2369,8 +2342,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 │⭔ ${prefix}tiktokmp3 [url]
 │⭔ ${prefix}igpost [url]
 │⭔ ${prefix}igreel [url]
-│⭔ ${prefix}twitter [url]
-│⭔ ${prefix}twittermp3 [url]
+│⭔ ${prefix}twitter [url]`
 │⭔ ${prefix}facebook [url]
 │⭔ ${prefix}pinterestdl [url]
 │⭔ ${prefix}ytmp3 [url]
