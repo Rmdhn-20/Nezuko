@@ -1154,6 +1154,14 @@ break
                 }
             }
             break
+		case 'stickeremoji': case 'stikeremoji': case 'emojisticker': case 'emojistiker': case 'smoji': {
+                if (!text) throw `Example : ${prefix + command} 😅`
+                let moji = await fetchJson(`https://viko-api.herokuapp.com/api/maker/emoji2png?apikey=rxking&text=${encodeURIComponent(text)}`)
+                for (let res of moji.result) {
+                    let encmedia = await hisoka.sendImageAsSticker(m.chat, res, m, { packname: global.packname, author: global.author })
+                    await fs.unlinkSync(encmedia)
+                }
+                }
             case 'ebinary': {
             if (!m.quoted.text && !text) throw `Kirim/reply text dengan caption ${prefix + command}`
             let { eBinary } = require('./lib/binary')
@@ -1374,7 +1382,7 @@ break
                 hisoka.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
             }
             break
-		case 'ytmp4': case 'ytvideo': case 'mp4': {
+		case 'ytmp4': case 'ytvideo': case 'mp4': case 'ytshort': {
                 let { ytv } = require('./lib/y2mate')
                 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`
                 let quality = args[1] ? args[1] : '360p'
@@ -2347,6 +2355,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 │⭔ ${prefix}pinterestdl [url]
 │⭔ ${prefix}ytmp3 [url]
 │⭔ ${prefix}ytmp4 [url] 
+│⭔ ${prefix}ytshort [url]
 │⭔ ${prefix}getmusic [query]
 │⭔ ${prefix}getvideo [query] 
 │⭔ ${prefix}umma [url]
@@ -2522,6 +2531,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 │⭔ ${prefix}removebg
 │⭔ ${prefix}sticker
 │⭔ ${prefix}emojimix
+│⭔ ${prefix}emojisticker
 │⭔ ${prefix}tovideo
 │⭔ ${prefix}togif
 │⭔ ${prefix}tourl
