@@ -1157,10 +1157,10 @@ break
 		case 'stickeremoji': case 'stikeremoji': case 'emojisticker': case 'emojistiker': case 'smoji': {
                 if (!text) throw `Example : ${prefix + command} 😅`
                 let moji = await fetchJson(`https://viko-api.herokuapp.com/api/maker/emoji2png?apikey=rxking&text=${encodeURIComponent(text)}`)
-                for (let res of moji.result) {
-                    let encmedia = await hisoka.sendImageAsSticker(m.chat, res, m, { packname: global.packname, author: global.author })
+   
+                    let encmedia = await hisoka.sendImageAsSticker(m.chat, moji.result, m, { packname: global.packname, author: global.author })
                     await fs.unlinkSync(encmedia)
-                }
+         
                 }
             case 'ebinary': {
             if (!m.quoted.text && !text) throw `Kirim/reply text dengan caption ${prefix + command}`
