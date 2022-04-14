@@ -1161,6 +1161,13 @@ break
                     await fs.unlinkSync(encmedia)
                 }
 		break
+			case 'ttp':{
+                if (!text) throw `Example : ${prefix + command} test`
+                let media = await getBuffer(`https://leyscoders-api.herokuapp.com/api/textto-image?text=${text}`)
+                let encmedia = await hisoka.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+                    await fs.unlinkSync(encmedia)
+                }
+                break
             case 'ebinary': {
             if (!m.quoted.text && !text) throw `Kirim/reply text dengan caption ${prefix + command}`
             let { eBinary } = require('./lib/binary')
