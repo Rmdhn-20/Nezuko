@@ -1811,13 +1811,12 @@ break
 	        case 'tiktok': case 'tiktoknowm': {
                 if (!text) throw 'Masukkan Query Link!'
                 m.reply(mess.wait)
-                let anu = await fetchJson(api('zenz', '/downloader/tiktok', { url: text }, 'apikey'))
                 let buttons = [
                     {buttonId: `tiktokwm ${text}`, buttonText: {displayText: '► With Watermark'}, type: 1},
                     {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                 ]
                 let buttonMessage = {
-                    video: { url: anu.result.nowatermark },
+                    video: { url: `https://api.dapuhy.xyz/api/socialmedia/tiktoknowm?url=${text}&apikey=ekaa123` },
                     caption: `Download From ${text}`,
                     footer: 'Press The Button Below',
                     buttons: buttons,
@@ -1829,13 +1828,12 @@ break
             case 'tiktokwm': case 'tiktokwatermark': {
                 if (!text) throw 'Masukkan Query Link!'
                 m.reply(mess.wait)
-                let anu = await fetchJson(api('zenz', '/downloader/tiktok', { url: text }, 'apikey'))
                 let buttons = [
                     {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '► No Watermark'}, type: 1},
                     {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                 ]
                 let buttonMessage = {
-                    video: { url: anu.result.watermark },
+                    video: { url: `https://api.dapuhy.xyz/api/socialmedia/tiktokwithwm?url=${text}&apikey=ekaa123` },
                     caption: `Download From ${text}`,
                     footer: 'Press The Button Below',
                     buttons: buttons,
@@ -1847,7 +1845,6 @@ break
             case 'tiktokmp3': case 'tiktokaudio': {
                 if (!text) throw 'Masukkan Query Link!'
                 m.reply(mess.wait)
-                let anu = await fetchJson(api('zenz', '/downloader/tiktok', { url: text }, 'apikey'))
                 let buttons = [
                     {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '► No Watermark'}, type: 1},
                     {buttonId: `tiktokwm ${text}`, buttonText: {displayText: '► With Watermark'}, type: 1}
@@ -1860,12 +1857,12 @@ break
                 }
                 let msg = await hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
 		let { toAudio } = require('./lib/converter')
-		let nganu = await getBuffer(anu.result.nowatermark)
+		let nganu = await getBuffer(`https://api.dapuhy.xyz/api/socialmedia/tiktokwithwm?url=${text}&apikey=ekaa123`)
 		let cnvrt = await toAudio(nganu, 'mp4')
                 hisoka.sendMessage(m.chat, { audio: cnvrt, mimetype: 'audio/mpeg'}, { quoted: msg })
             }
             break
-	        case 'igpost': case 'igreel': case 'igreels': {
+		case 'igvideo': case 'igvid': case 'igreel': case 'igreels': {
                 if (!text) throw 'No Query Url!'
                 m.reply(mess.wait)
                     hisoka.sendMessage(m.chat, { video: { url: `https://api.dapuhy.xyz/api/socialmedia/igdownloader?url=${text}&apikey=ekaa123` }, caption: `Download IG from : ${text}`}, { quoted: m })
@@ -2354,7 +2351,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 │⭔ ${prefix}tiktoknowm [url]
 │⭔ ${prefix}tiktokwm [url]
 │⭔ ${prefix}tiktokmp3 [url]
-│⭔ ${prefix}igpost [url]
+│⭔ ${prefix}igvideo [url]
 │⭔ ${prefix}igreel [url]
 │⭔ ${prefix}twitter [url]
 │⭔ ${prefix}facebook [url]
