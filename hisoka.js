@@ -1816,7 +1816,7 @@ break
                     {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                 ]
                 let buttonMessage = {
-                    video: { url: `https://api.dapuhy.xyz/api/socialmedia/tiktoknowm?url=${text}&apikey=ekaa123` },
+                    video: { url: `https://api.dapuhy.xyz/api/socialmedia/tiktoknowm?url=${text}&apikey=vGnXLY0evU` },
                     caption: `Download From ${text}`,
                     footer: 'Press The Button Below',
                     buttons: buttons,
@@ -1833,7 +1833,7 @@ break
                     {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                 ]
                 let buttonMessage = {
-                    video: { url: `https://api.dapuhy.xyz/api/socialmedia/tiktokwithwm?url=${text}&apikey=ekaa123` },
+                    video: { url: `https://api.dapuhy.xyz/api/socialmedia/tiktokwithwm?url=${text}&apikey=vGnXLY0evU` },
                     caption: `Download From ${text}`,
                     footer: 'Press The Button Below',
                     buttons: buttons,
@@ -1857,7 +1857,7 @@ break
                 }
                 let msg = await hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
 		let { toAudio } = require('./lib/converter')
-		let nganu = await getBuffer(`https://api.dapuhy.xyz/api/socialmedia/tiktokwithwm?url=${text}&apikey=ekaa123`)
+		let nganu = await getBuffer(`https://api.dapuhy.xyz/api/socialmedia/tiktokwithwm?url=${text}&apikey=vGnXLY0evU`)
 		let cnvrt = await toAudio(nganu, 'mp4')
                 hisoka.sendMessage(m.chat, { audio: cnvrt, mimetype: 'audio/mpeg'}, { quoted: msg })
             }
@@ -1865,7 +1865,7 @@ break
 		case 'igvideo': case 'igvid': case 'igreel': case 'igreels': {
                 if (!text) throw 'No Query Url!'
                 m.reply(mess.wait)
-                    hisoka.sendMessage(m.chat, { video: { url: `https://api.dapuhy.xyz/api/socialmedia/igdownloader?url=${text}&apikey=ekaa123` }, caption: `Download IG from : ${text}`}, { quoted: m })
+                    hisoka.sendMessage(m.chat, { video: { url: `https://api.dapuhy.xyz/api/socialmedia/igdownloader?url=${text}&apikey=vGnXLY0evU` }, caption: `Download IG from : ${text}`}, { quoted: m })
 		}
             break
             case 'joox': case 'jooxdl': {
