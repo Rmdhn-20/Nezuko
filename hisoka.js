@@ -1808,15 +1808,16 @@ break
                 hisoka.sendText(m.chat, `⭔ *Hasil :* ${anu.message}`, m)
             }
             break
-	        case 'tiktok': case 'tiktoknowm': {
+	        case 'tt': case 'ttdl': case 'tiktok': case 'tiktoknowm': {
                 if (!text) throw 'Masukkan Query Link!'
+                let tiktik = await fetchJson(`https://wanz-apik.herokuapp.com/api/download/tiktok?url=${text}&apikey=WanzBotz`)
                 m.reply(mess.wait)
                 let buttons = [
                     {buttonId: `tiktokwm ${text}`, buttonText: {displayText: '► With Watermark'}, type: 1},
                     {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                 ]
                 let buttonMessage = {
-                    video: { url: `https://api.dapuhy.xyz/api/socialmedia/tiktoknowm?url=${text}&apikey=vGnXLY0evU` },
+                    video: { url: tiktik.result.nowm },
                     caption: `Download From ${text}`,
                     footer: 'Press The Button Below',
                     buttons: buttons,
@@ -1825,15 +1826,16 @@ break
                 hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
-            case 'tiktokwm': case 'tiktokwatermark': {
+            case 'ttwm': case 'tiktokwm': case 'tiktokwatermark': {
                 if (!text) throw 'Masukkan Query Link!'
+                let toktok = await fetchJson(`https://wanz-apik.herokuapp.com/api/download/tiktok?url=${text}&apikey=WanzBotz`)
                 m.reply(mess.wait)
                 let buttons = [
                     {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '► No Watermark'}, type: 1},
                     {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                 ]
                 let buttonMessage = {
-                    video: { url: `https://api.dapuhy.xyz/api/socialmedia/tiktokwithwm?url=${text}&apikey=vGnXLY0evU` },
+                    video: { url: toktok.result.wm },
                     caption: `Download From ${text}`,
                     footer: 'Press The Button Below',
                     buttons: buttons,
@@ -1844,6 +1846,7 @@ break
             break
             case 'tiktokmp3': case 'tiktokaudio': {
                 if (!text) throw 'Masukkan Query Link!'
+                let mp3ny = await fetchJson(`https://wanz-apik.herokuapp.com/api/download/tiktok?url=${text}&apikey=WanzBotz`)
                 m.reply(mess.wait)
                 let buttons = [
                     {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '► No Watermark'}, type: 1},
@@ -1856,16 +1859,21 @@ break
                     headerType: 2
                 }
                 let msg = await hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
-		let { toAudio } = require('./lib/converter')
-		let nganu = await getBuffer(`https://api.dapuhy.xyz/api/socialmedia/tiktokwithwm?url=${text}&apikey=vGnXLY0evU`)
-		let cnvrt = await toAudio(nganu, 'mp4')
-                hisoka.sendMessage(m.chat, { audio: cnvrt, mimetype: 'audio/mpeg'}, { quoted: msg })
+                hisoka.sendMessage(m.chat, { audio: mp3ny.result.audio, mimetype: 'audio/mpeg'}, { quoted: msg })
             }
             break
 		case 'igvideo': case 'igvid': case 'igreel': case 'igreels': {
                 if (!text) throw 'No Query Url!'
+		let igvid = await fetchJson(`https://api.dapuhy.xyz/api/socialmedia/igdownloader?url=${text}&apikey=vGnXLY0evU`)
                 m.reply(mess.wait)
-                    hisoka.sendMessage(m.chat, { video: { url: `https://api.dapuhy.xyz/api/socialmedia/igdownloader?url=${text}&apikey=vGnXLY0evU` }, caption: `Download IG from : ${text}`}, { quoted: m })
+                    hisoka.sendMessage(m.chat, { video: { url: igvid.result  }, caption: `Download IG from : ${text}`}, { quoted: m })
+		}
+            break
+            case 'igphoto': case 'igpict': {
+                if (!text) throw 'No Query Url!'
+		let igphot = await fetchJson(`https://api.dapuhy.xyz/api/socialmedia/igdownloader?url=${text}&apikey=vGnXLY0evU`)
+                m.reply(mess.wait)
+                    hisoka.sendMessage(m.chat, { image: { url: igphot.result  }, caption: `Download IG from : ${text}`}, { quoted: m })
 		}
             break
             case 'joox': case 'jooxdl': {
