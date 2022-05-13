@@ -1864,9 +1864,9 @@ break
             break
 		case 'igvideo': case 'igvid': case 'igreel': case 'igreels': {
                 if (!text) throw 'No Query Url!'
-		let igvid = await fetchJson(`https://api.dapuhy.xyz/api/socialmedia/igdownloader?url=${text}&apikey=vGnXLY0evU`)
+		let igvid = await fetchJson(`https://api.zekais.com/igdl2?url=${text}&apikey=zekais`)
                 m.reply(mess.wait)
-                    hisoka.sendMessage(m.chat, { video: { url: igvid.result  }, caption: `Download IG from : ${text}`}, { quoted: m })
+                    hisoka.sendMessage(m.chat, { video: { url: igvid.result  }, caption: `Download IG from : ${text}\n\n+ Username : ${igvid.username}\n+ Followers : ${igvid.followers}`}, { quoted: m })
 		}
             break
             case 'igphoto': case 'igpict': {
